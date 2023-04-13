@@ -17,19 +17,6 @@ function newPokemon(req, res) {
   res.render ('pokemon/new',)
 }
 
-function show(req, res) {
-  Pokemon.findById(req.params.pokemonid)
-  .then(pokemon => {
-    res.render('pokemon/show', {
-      pokemon:pokemon
-    })
-  })
-  .catch(error => {
-    console.log(error)
-    res.redirect('/todos')
-  })
-}
-
 function create(req,res) {
   req.body.starter = false
   Pokemon.create(req.body)
@@ -42,9 +29,34 @@ function create(req,res) {
   })
 }
 
+function show(req, res) {
+  Pokemon.findById(req.params.pokemonId)
+  .then(pokemon => {
+    res.render('pokemon/show', {
+      pokemon: pokemon
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/pokemon')
+  })
+}
+
+function deletePokemon(req, res) {
+  Todo.findByIdAndDelete(req.params.pokemonId)
+  .then(pokemon => {
+    res.redirect('/pokemon')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/pokemon')
+  })
+}
+
 export{
   index,
   newPokemon as new,
+  create,
   show,
-  create
+  deletePokemon as delete
 }

@@ -5,6 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import createError from 'http-errors'
 import logger from 'morgan'
+import methodOverride from 'method-override'
 import './config/database.js'
 
 // import routers
@@ -21,12 +22,18 @@ app.set('view engine', 'ejs')
 // basic middleware
 app.use(logger('dev'))
 app.use(express.json())
+app.use(function(req, res, next) {
+  req.myName = 'Eugene'
+  next()
+})
 app.use(express.urlencoded({ extended: false }))
 app.use(
   express.static(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+
+app.use(methodOverride('_method'))
 
 // mount imported routes
 app.use('/', indexRouter)

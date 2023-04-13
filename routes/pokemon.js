@@ -7,8 +7,9 @@ const router = Router()
 // GET localhost:3000/
 router.get('/', pokemonCtrl.index )
 router.get('/new', pokemonCtrl.new)
-router.get('/show', pokemonCtrl.show)
+router.get('/:pokemonId', pokemonCtrl.show)
 router.post('/', pokemonCtrl.create)
+router.delete('/:pokemonId', pokemonCtrl.delete)
 
 
 export { router }
