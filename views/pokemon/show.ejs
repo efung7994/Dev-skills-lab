@@ -10,6 +10,14 @@
   <h2>Pokemon ID #<%= pokemon._id %></h2>
   <h3><%= pokemon.text %></h3>
   <p>Starter: <%= pokemon.starter ? 'Yes' : 'No' %></p>
+  <form 
+          action="/pokemon/<%= pokemon._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+        <button type="submit">DELETE</button>
+        </form>
   <a href="/pokemon">Go back</a>
+  
 </body>
 </html>
