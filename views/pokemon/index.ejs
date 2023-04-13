@@ -13,13 +13,13 @@
     <% pokemon.forEach(mon => { %>
       <li>
         <form 
-          action="/todos/<%= mon._id %>?_method=DELETE"
+          action="/pokemon/<%= mon._id %>?_method=DELETE"
           class="delete-form"
           method="POST"
         >
         <button type="submit">X</button>
         </form>
-        <a href="/pokemon<%= mon._id %>">
+        <a href="/pokemon/<%= mon._id %>">
 				<%= mon.text %> 
 				- 
 				<%= mon.starter ? 'Starter' : 'Not Starter' %>

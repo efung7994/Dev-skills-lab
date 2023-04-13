@@ -43,7 +43,7 @@ function show(req, res) {
 }
 
 function deletePokemon(req, res) {
-  Todo.findByIdAndDelete(req.params.pokemonId)
+  Pokemon.findByIdAndDelete(req.params.pokemonId)
   .then(pokemon => {
     res.redirect('/pokemon')
   })
